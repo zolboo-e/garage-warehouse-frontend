@@ -1,0 +1,22 @@
+{
+  "common": {},
+  "header": {
+    "help": "Help",
+    "instructions": "Instructions",
+    "search": "Search"
+  },
+  "sidebar": {
+    "parts": "Parts",
+    "purchases": "Purchases",
+    "sales": "Sales"
+  },
+  "parts": {
+    "title": "Parts"
+  },
+  "purchases": {
+    "title": "Purchases"
+  },
+  "sales": {
+    "title": "Sales"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "common": {},
+  "header": {
+    "help": "Тусламж",
+    "instructions": "Зөвлөгөө",
+    "search": "Хайлт"
+  },
+  "sidebar": {
+    "parts": "Агуулах",
+    "purchases": "Сэлбэг захиалга",
+    "sales": "Борлуулалт"
+  },
+  "parts": {
+    "title": "Агуулах"
+  },
+  "purchases": {
+    "title": "Сэлбэг захиалга"
+  },
+  "sales": {
+    "title": "Борлуулалт"
+  }
+}
