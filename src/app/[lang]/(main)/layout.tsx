@@ -1,3 +1,4 @@
+import { type Metadata } from "next";
 import { use } from "react";
 
 import { getDictionary } from "@/i18n/dictionaries";
@@ -6,6 +7,9 @@ import { classNames } from "@/utils/class_names";
 import { Header } from "./header";
 import { Sidebar } from "./sidebar";
 
+export const metadata: Metadata = {
+  title: "Main",
+};
 const MainLayout: React.Layout = ({ children, params }) => {
   const dict = use(getDictionary(params.lang));
 

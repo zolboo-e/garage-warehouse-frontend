@@ -2,11 +2,13 @@ import "server-only";
 
 import { initClient, tsRestFetchApi } from "@ts-rest/core";
 
+import { backend } from "@/configs/default";
+
 import { appContract } from ".";
 
 export const server = initClient(appContract, {
   baseHeaders: {},
-  baseUrl: "http://localhost:3001",
+  baseUrl: backend.baseURL,
   api: async (args) => {
     const { path, body, headers, method } = args;
     // const response = await fetch(path, { body, headers, method });

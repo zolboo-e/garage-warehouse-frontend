@@ -59,7 +59,12 @@ const columns: ColumnDef<Stock>[] = [
     cell: ({ row }) => {
       const image = row.getValue<string | null>("image");
 
-      return <Image src={image ?? ""} height={24} width={24} alt="" />;
+      // TODO: default image
+      if (!image) {
+        return <div className="h-6 w-6 bg-red-400" />;
+      }
+
+      return <Image src={image} height={24} width={24} alt="" />;
     },
   },
   // {
