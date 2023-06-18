@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   ],
 };
 
+// export const dynamic = "force-dynamic";
 // export const generateStaticParams = async () => {
 //   return [config.locales.map((locale) => ({ lang: locale }))];
 // };

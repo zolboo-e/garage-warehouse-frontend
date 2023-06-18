@@ -1,16 +1,15 @@
 import { Boxes } from "@/assets/icons/solid/boxes";
 import { Cart } from "@/assets/icons/solid/cart";
 import { Money } from "@/assets/icons/solid/money";
-import { localizedPathname, type Locale } from "@/i18n";
+import { localizedPathname } from "@/i18n";
+import { getLocale, getTranslations } from "@/i18n/server";
 
 import { SidebarItem } from "./sidebar_item";
 
-interface SidebarProps {
-  lang: Locale;
-}
-export const Sidebar: React.FC<
-  SidebarProps & React.Translations<"sidebar">
-> = ({ lang, translations }) => {
+export const Sidebar: React.FC = () => {
+  const locale = getLocale();
+  const translations = getTranslations();
+
   const sidebarItems = [
     {
       href: "/parts",
@@ -43,7 +42,7 @@ export const Sidebar: React.FC<
             <li key={key}>
               <SidebarItem
                 {...props}
-                href={localizedPathname(lang, href)}
+                href={localizedPathname(locale, href)}
                 _key={key}
               />
             </li>

@@ -16,10 +16,10 @@ const MainLayout: React.Layout = ({ children, params }) => {
   return (
     <div className="grid h-screen w-screen grid-cols-[160px,1fr]">
       <div className="row-span-2">
-        <Sidebar lang={params.lang} translations={{ sidebar: dict.sidebar }} />
+        <Sidebar />
       </div>
       <div className="grid h-screen w-full grid-rows-[52px,1fr]">
-        <Header translations={{ header: dict.header, sidebar: dict.sidebar }} />
+        <Header />
         <div className="relative h-full overflow-auto">{children}</div>
       </div>
     </div>
