@@ -22,7 +22,7 @@ export const LanguageSwitcher: React.FC = () => {
   const locale =
     config.locales.find(
       (locale) =>
-        pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+        pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
     ) ?? config.defaultLocale;
 
   return (
@@ -37,6 +37,9 @@ export const LanguageSwitcher: React.FC = () => {
         <DropdownMenuRadioGroup
           value={locale}
           onValueChange={(value) => {
+            if (value === locale) {
+              return;
+            }
             startTransition(() => {
               if (value === config.defaultLocale) {
                 router.push(pathname.replace(locale, value));

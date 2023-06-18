@@ -3,6 +3,7 @@
 //
 import {
   type ColumnDef,
+  type Row,
   type Table as TTable,
   flexRender,
 } from "@tanstack/react-table";
@@ -19,11 +20,13 @@ import {
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
+  rows?: (data: Row<TData>) => React.ReactNode;
   table: TTable<TData>;
 }
 
 export const DataTable = <TData, TValue>({
   columns,
+  rows,
   table,
 }: DataTableProps<TData, TValue>) => {
   return (
@@ -47,8 +50,12 @@ export const DataTable = <TData, TValue>({
         ))}
       </TableHeader>
       <TableBody>
-        {table.getRowModel().rows?.length ? (
-          table.getRowModel().rows.map((row) => (
+        {table.getRowModel().rows.map((row) => {
+          if (rows) {
+            return rows(row);
+          }
+
+          return (
             <TableRow
               key={row.id}
               data-state={row.getIsSelected() && "selected"}
@@ -59,14 +66,8 @@ export const DataTable = <TData, TValue>({
                 </TableCell>
               ))}
             </TableRow>
-          ))
-        ) : (
-          <TableRow>
-            <TableCell colSpan={columns.length} className="h-24 text-center">
-              No results.
-            </TableCell>
-          </TableRow>
-        )}
+          );
+        })}
       </TableBody>
     </Table>
   );

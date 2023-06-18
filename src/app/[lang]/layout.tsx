@@ -7,6 +7,7 @@ import { BreakpointIndicator, ClientLoader } from "@/components";
 import { siteConfig } from "@/configs/site";
 import { GlobalTransitionProvider } from "@/contexts";
 import { classNames } from "@/utils/class_names";
+import { config } from "@/i18n/index";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,10 +23,9 @@ export const metadata: Metadata = {
   ],
 };
 
-export const generateStaticParams = async () => {
-  return [{ lang: "en" }, { lang: "mn" }];
-};
-
+// export const generateStaticParams = async () => {
+//   return [config.locales.map((locale) => ({ lang: locale }))];
+// };
 const RootLayout: React.Layout = ({ children, params }) => {
   return (
     <html lang={params.lang}>

@@ -1,6 +1,7 @@
 import "server-only";
 
 import { initClient, tsRestFetchApi } from "@ts-rest/core";
+import { cookies } from "next/headers";
 
 import { backend } from "@/configs/default";
 
@@ -10,8 +11,11 @@ export const server = initClient(appContract, {
   baseHeaders: {},
   baseUrl: backend.baseURL,
   api: async (args) => {
-    const { path, body, headers, method } = args;
-    // const response = await fetch(path, { body, headers, method });
+    const cookieStore = cookies();
+    const locale = cookieStore.get("locale");
+    if (locale) {
+      args.headers["x-locale"] = locale.value;
+    }
 
     return tsRestFetchApi(args);
   },

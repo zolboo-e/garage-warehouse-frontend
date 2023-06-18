@@ -25,10 +25,24 @@ import { DataTable } from "@/shared/data_table";
 import { DataTableColumnHeader } from "@/shared/data_table_column_header";
 import { DataTablePagination } from "@/shared/data_table_pagination";
 import { DataTableViewOptions } from "@/shared/data_table_view_options";
+import { Input } from "@/shared/input";
+import { Label } from "@/shared/label";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/shared/sheet";
+import { TableCell, TableRow } from "@/shared/table";
 import { classNames } from "@/utils/class_names";
 
 //
 import { StockTableFilter } from "./stocks_table_filter";
+import { StockDetailsSheet } from "./stock_details_sheet";
 
 //
 // import { StockDetailsSheet } from "./stock_details_sheet";
@@ -160,14 +174,10 @@ const columns: ColumnDef<Stock>[] = [
   //   },
   // },
 
-  // {
-  //   id: "details",
-  //   cell: ({ row }) => {
-  //     const name = row.getValue<string>("name");
-
-  //     return <StockDetailsSheet id={row.original.id} name={name} />;
-  //   },
-  // },
+  {
+    id: "details",
+    cell: ({ row }) => <StockDetailsSheet id={row.original.id} />,
+  },
   // {
   //   id: "actions",
   //   cell: ({ row }) => {

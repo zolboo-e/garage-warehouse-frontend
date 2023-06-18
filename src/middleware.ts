@@ -17,13 +17,15 @@ export const middleware: NextMiddleware = (request) => {
       return response;
     }
   }
+
+  return NextResponse.next({ request });
 };
 
 const checkLocale = (request: NextRequest) => {
   const pathname = request.nextUrl.pathname;
 
   const locale = i18n.locales.find(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
   );
 
   if (!locale) {
